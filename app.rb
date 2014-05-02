@@ -10,7 +10,7 @@ require 'coffee-script'
 # Application:::::::::::::::::::::::::::::::::::::::::::::::::::
 class SassHandler < Sinatra::Base
 
-  set :views, File.dirname(__FILE__) + '/templates/sass'
+  set :views, File.dirname(__FILE__) + '/assets/stylesheets'
 
   get '/css/*.css' do
     filename = params[:splat].first
@@ -20,7 +20,7 @@ class SassHandler < Sinatra::Base
 end
 
 class CoffeeHandler < Sinatra::Base
-  set :views, File.dirname(__FILE__) + '/templates/coffee'
+  set :views, File.dirname(__FILE__) + '/assets/coffeescript'
 
   get "/js/*.js" do
     filename = params[:splat].first
@@ -33,12 +33,21 @@ class MyApp < Sinatra::Base
   use CoffeeHandler
 
   # Configuration:::::::::::::::::::::::::::::::::::::::::::::::
-  set :public, File.dirname(__FILE__) + '/public'
-  set :views, File.dirname(__FILE__) + '/templates'
+  set :public, File.dirname(__FILE__) + '/'
+  set :views, File.dirname(__FILE__) + '/views'
 
   # Route Handlers::::::::::::::::::::::::::::::::::::::::::::::
   get '/' do
     slim :index
+  end
+
+  post '/qr' do
+    params[:file].inspect
+    # redirect to('/after_qr')
+  end
+
+  get '/after_qr' do
+    "WHAAT"
   end
 
 end
