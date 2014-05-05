@@ -43,8 +43,7 @@ class MyApp < Sinatra::Base
   end
 
   post '/qr' do
-    @qr_decode = ZXing.decode params[:file][:tempfile]
-    slim :result
+    ZXing.decode params[:file][:tempfile]
   end
 
 end
