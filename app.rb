@@ -6,6 +6,7 @@ require 'sinatra/base'
 require 'slim'
 require 'sass'
 require 'coffee-script'
+require 'zxing'
 
 # Application:::::::::::::::::::::::::::::::::::::::::::::::::::
 class SassHandler < Sinatra::Base
@@ -42,12 +43,8 @@ class MyApp < Sinatra::Base
   end
 
   post '/qr' do
-    params[:file].inspect
-    # redirect to('/after_qr')
-  end
-
-  get '/after_qr' do
-    "WHAAT"
+    @qr_decode = ZXing.decode params[:file][:tempfile]
+    slim :result
   end
 
 end
