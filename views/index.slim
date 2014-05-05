@@ -2,11 +2,16 @@ doctype html
 html
   head
     title QR Code Test
+    script language="javascript" type="text/javascript" src="https://code.jquery.com/jquery-2.1.0.min.js"
+    script language="javascript" type="text/javascript" src="/assets/coffescripts/application.js"
+
 
   body
     h1 QR - Much Amaze
     form action="/qr" method="post" enctype="multipart/form-data"
-      input type="file" name="file" accept="image/*;capture=camera"
-      input type="submit" value="Submit QR"
+      input type="file" name="file" accept="image/*;capture=camera" id="qr_input"
+      / input type="submit" value="Submit QR" id="submit_button"
+
+    div id="result"
 
 
