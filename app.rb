@@ -45,7 +45,6 @@ class MyApp < Sinatra::Base
   post '/qr' do
     ZXing.decode params[:file][:tempfile]
   end
-
 end
 
 if __FILE__ == $0
