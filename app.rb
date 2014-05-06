@@ -7,6 +7,7 @@ require 'slim'
 require 'sass'
 require 'coffee-script'
 require 'zxing'
+require 'rake'
 
 # Application:::::::::::::::::::::::::::::::::::::::::::::::::::
 class SassHandler < Sinatra::Base
