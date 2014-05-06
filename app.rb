@@ -1,12 +1,12 @@
 #!/usr/bin/env ruby
 
 # Libraries:::::::::::::::::::::::::::::::::::::::::::::::::::::::
-# require 'rubygems'
-# require 'sinatra/base'
-# require 'slim'
-# require 'sass'
-# require 'coffee-script'
-# require 'zxing'
+require 'rubygems'
+require 'sinatra/base'
+require 'slim'
+require 'sass'
+require 'coffee-script'
+require 'zxing'
 
 # Application:::::::::::::::::::::::::::::::::::::::::::::::::::
 class SassHandler < Sinatra::Base
