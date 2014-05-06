@@ -22,11 +22,16 @@ $(function() {
       processData: false // necessary
     }).done(
       function(data) {
-        $('#result').html(data);
+        if(data === ''){
+          $('#result').html('Could not decode QR')
+        }
+        else {
+          $('#result').html(data);
+        }
       }
     ).fail(
       function(error) {
-        console.log(e = error);
+        $('#result').html('Server Error')
       }
     );
   }
