@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '1.9.1'
+ruby '2.0.0'
 
 gem 'sinatra'
 gem 'slim'
