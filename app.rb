@@ -34,6 +34,8 @@ class MyApp < Sinatra::Base
   use SassHandler
   use CoffeeHandler
 
+  set :bind, '0.0.0.0'
+
   # Configuration:::::::::::::::::::::::::::::::::::::::::::::::
   set :public, File.dirname(__FILE__) + '/'
   set :views, File.dirname(__FILE__) + '/views'
@@ -41,6 +43,10 @@ class MyApp < Sinatra::Base
   # Route Handlers::::::::::::::::::::::::::::::::::::::::::::::
   get '/' do
     slim :index
+  end
+
+  get '/uri_test' do
+    slim :uri_test
   end
 
   post '/qr' do
