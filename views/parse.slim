@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title Parsed QR Code
+
+  body
+    h1 QR - Parsed
+
+    form method="post" action="send"
+      label Address
+      input type="text" value="#{@address}"
+      br
+      label Amount
+      input type="text" value="#{@amount}"
+      br
+      button type="submit" value="Send"
+
+
