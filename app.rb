@@ -8,6 +8,8 @@ require 'sass'
 require 'coffee-script'
 require 'zxing'
 require 'rake'
+require 'uri'
+require 'byebug'
 
 # Application:::::::::::::::::::::::::::::::::::::::::::::::::::
 class SassHandler < Sinatra::Base
@@ -49,8 +51,25 @@ class MyApp < Sinatra::Base
     slim :uri_test
   end
 
+  get '/parse/*' do
+    btc_uri = parse_btc_uri
+    @address = btc_uri.host
+    @amount = @btc_params['amount']
+    slim :parse
+  end
+
   post '/qr' do
     ZXing.decode params[:file][:tempfile]
+  end
+
+  def parse_btc_uri
+    btc_uri = params[:splat].first[0..-2] # remove end junk character
+    ind = btc_uri.index('n:/')
+    btc_uri.insert(ind + 2, '/') # add extra slash
+    btc_uri_parsed =  URI.parse(btc_uri)
+    @btc_params = {}
+    btc_uri_parsed.query.split('=').each_slice(2) { |pair| @btc_params[pair.first] = pair.last }
+    btc_uri_parsed
   end
 end
 
